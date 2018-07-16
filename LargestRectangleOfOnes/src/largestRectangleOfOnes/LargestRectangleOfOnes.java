@@ -2,6 +2,8 @@ package largestRectangleOfOnes;
 
 import java.util.LinkedList;
 
+// LeetCode #85 (Maximal Rectangle).
+
 // Determine the largest rectangle of 1s in a binary matrix 
 // (a binary matrix only contains 0 and 1), return the area.
 
@@ -24,7 +26,7 @@ public class LargestRectangleOfOnes {
 		return area;
 	}
 
-	// LeetCode #84 (Largest Rectangle in Histogram). 
+	// LeetCode #84 (Largest Rectangle in Histogram).
 	// O(n) time, O(n) space
 	private int largest(int[] array) {
 		LinkedList<Integer> stack = new LinkedList<>();
