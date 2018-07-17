@@ -15,7 +15,7 @@ import java.util.Map;
 public class MajorityNumber3 {
 
 	// Solution 1: Sort the array
-	// O(n * log(n)) time, O(n) space, because of merge sort (for primitive types).
+	// O(n * log(n)) time, O(n) space, because of quick sort (for primitive types).
 
 	// Solution 2: Hash map.
 	// O(n) time, O(n) space.
