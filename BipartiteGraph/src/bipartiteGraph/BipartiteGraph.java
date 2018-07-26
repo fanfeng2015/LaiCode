@@ -28,9 +28,9 @@ public class BipartiteGraph {
 		if (visited.containsKey(node)) {
 			return true;
 		}
+		visited.put(node, 0);
 		LinkedList<GraphNode> queue = new LinkedList<>();
 		queue.offerLast(node);
-		visited.put(node, 0);
 		while (!queue.isEmpty()) {
 			GraphNode cur = queue.pollFirst();
 			for (GraphNode neighbor : cur.neighbors) {
