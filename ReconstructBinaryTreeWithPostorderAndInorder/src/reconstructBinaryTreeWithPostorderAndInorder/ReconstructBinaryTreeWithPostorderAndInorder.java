@@ -5,7 +5,7 @@ import java.util.Map;
 
 // LeetCode #106 (Construct Binary Tree from Inorder and Postorder Traversal).
 
-// Given the postorder and inorder traversal sequence of a binary tree, reconstruct the original tree.
+// Given the post-order and in-order traversal sequence of a binary tree, reconstruct the original tree.
 
 // Assumption:
 // 1. The given sequences are not null and they have the same length.
