@@ -3,20 +3,23 @@ package reconstrcutBinaryTreeWithPreorderAndInorder;
 import java.util.HashMap;
 import java.util.Map;
 
-// Given the pre-order and in-order traversal sequence of a binary tree, reconstruct the original tree.
+// LeetCode #105 (Construct Binary Tree from Preorder and Inorder Traversal).
+
+// Given the pre-order and in-order traversal sequence of a binary tree, reconstruct
+// the original tree.
 
 // Assumption:
-// 1. The given sequences are not null and they have the same length
-// 2. There are no duplicate keys in the binary tree
+// 1. The given sequences are not null and they have the same length.
+// 2. There are no duplicate keys in the binary tree.
 
 public class ReconstructBinaryTreeWithPreorderAndInorder {
 
 	public TreeNode reconstruct(int[] in, int[] pre) {
-		Map<Integer, Integer> map = indexMap(in);
+		Map<Integer, Integer> map = mapKeyToIndex(in);
 		return helper(pre, map, 0, in.length - 1, 0, pre.length - 1);
 	}
 
-	private Map<Integer, Integer> indexMap(int[] in) {
+	private Map<Integer, Integer> mapKeyToIndex(int[] in) {
 		Map<Integer, Integer> map = new HashMap<>();
 		for (int i = 0; i < in.length; i++) {
 			map.put(in[i], i);
@@ -36,5 +39,5 @@ public class ReconstructBinaryTreeWithPreorderAndInorder {
 	}
 
 	// Time complexity is O(n).
-	// Space complexity is O(n).
+	// Space complexity is O(n), when binary tree is highly unbalanced.
 }
