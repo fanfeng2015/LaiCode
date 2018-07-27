@@ -3,11 +3,13 @@ package reconstructBinaryTreeWithPostorderAndInorder;
 import java.util.HashMap;
 import java.util.Map;
 
+// LeetCode #106 (Construct Binary Tree from Inorder and Postorder Traversal).
+
 // Given the postorder and inorder traversal sequence of a binary tree, reconstruct the original tree.
 
 // Assumption:
-// 1. The given sequences are not null and they have the same length
-// 2. There are no duplicate keys in the binary tree
+// 1. The given sequences are not null and they have the same length.
+// 2. There are no duplicate keys in the binary tree.
 
 public class ReconstructBinaryTreeWithPostorderAndInorder {
 
@@ -37,5 +39,5 @@ public class ReconstructBinaryTreeWithPostorderAndInorder {
 	}
 
 	// Time complexity is O(n).
-	// Space complexity is O(n).
+	// Space complexity is O(n), when binary tree is highly unbalanced.
 }
