@@ -5,11 +5,12 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-// Given the levelorder and inorder traversal sequence of a binary tree, reconstruct the original tree.
+// Given the level-order and in-order traversal sequence of a binary tree, reconstruct
+// the original tree.
 
 // Assumption:
-// 1. The given sequences are not null and they have the same length
-// 2. There are no duplicate keys in the binary tree
+// 1. The given sequences are not null and they have the same length.
+// 2. There are no duplicate keys in the binary tree.
 
 public class ReconstructBinaryTreeWithLevelorderAndInorder {
 
@@ -31,7 +32,6 @@ public class ReconstructBinaryTreeWithLevelorderAndInorder {
 	}
 
 	private TreeNode helper(Map<Integer, Integer> map, List<Integer> list) {
-		// base case
 		if (list.isEmpty()) {
 			return null;
 		}
@@ -50,7 +50,7 @@ public class ReconstructBinaryTreeWithLevelorderAndInorder {
 		return root;
 	}
 
-	// Time complexity is O(n^2) in the worst case, but O(n*log(n)) in the
-	// average case.
-	// Space complexity is O(n).
+	// Time complexity is O(n^2) in the worst case, but O(n*log(n)) on average.
+	// Space complexity is O(n^2) in the worst case, but O(n*log(n)) on average, or
+	// O(n) if garbage collection is ideal, although not possible in practice.
 }
