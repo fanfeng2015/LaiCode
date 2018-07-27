@@ -1,5 +1,7 @@
 package editDistance;
 
+// LeetCode #72 (Edit Distance).
+
 // Given two strings of alphanumeric characters, determine the minimum number of 
 // Replace, Delete, and Insert operations needed to transform one string into the other.
 
@@ -9,7 +11,6 @@ public class EditDistance {
 
 	// recursive
 	public int editDistance(String one, String two) {
-		// base case
 		if (one.length() == 0) {
 			return two.length();
 		}
@@ -26,16 +27,12 @@ public class EditDistance {
 		return min(nothing, replace, delete, insert);
 	}
 
-	private int min(int nothing, int replace, int delete, int insert) {
-		return Math.min(nothing, Math.min(replace, Math.min(delete, insert)));
-	}
-
 	// Time complexity is O(4^(m+n)).
 	// Space complexity is O(m + n).
 
 	// DP
-	// M[i][j]: minimum number of operations needed to transfer index 0 to i - 1,
-	// inclusive, of string one, to index 0 to j - 1, inclusive, of string two
+	// M[i][j]: minimum number of operations needed to transfer one in [0, i - 1] to
+	// two in [0, j - 1]
 	public int editDistance2(String one, String two) {
 		if (one.length() == 0) {
 			return two.length();
@@ -60,5 +57,9 @@ public class EditDistance {
 	}
 
 	// Time complexity is O(m*n).
-	// Space complexity is O(m*n), but obviously can be optimized to O(n).
+	// Space complexity is O(m*n), but obviously can be optimized to O(1).
+
+	private int min(int nothing, int replace, int delete, int insert) {
+		return Math.min(nothing, Math.min(replace, Math.min(delete, insert)));
+	}
 }
