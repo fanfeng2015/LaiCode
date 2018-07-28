@@ -3,6 +3,8 @@ package mostPointsOnALine;
 import java.util.HashMap;
 import java.util.Map;
 
+// LeetCode #149 (Max Points on a Line).
+
 // Given an array of 2D coordinates of points (all the coordinates are integers), 
 // find the largest number of points that can be crossed by a single line in 2D space. 
 
@@ -13,32 +15,30 @@ public class MostPointsOnALine {
 	public int most(Point[] points) {
 		int result = 0;
 		for (int i = 0; i < points.length; i++) {
-			Point seed = points[i];
-			int same = 1;
-			int sameX = 0;
-			int most = 0;
-			Map<Double, Integer> count = new HashMap<>();
+			Point cur = points[i];
+			int same = 1; // same point as cur
+			int sameX = 0; // vertical line
+			int differentX = 0; // non-vertical line
+			Map<Double, Integer> countMap = new HashMap<>();
 			for (int j = 0; j < points.length; j++) {
 				if (i == j) {
 					continue;
 				}
-				Point temp = points[j];
-				if (temp.x == seed.x && temp.y == seed.y) {
+				Point next = points[j];
+				if (next.x == cur.x && next.y == cur.y) {
 					same++;
-				} else if (temp.x == seed.x) {
+				} else if (next.x == cur.x) {
 					sameX++;
 				} else {
-					double slope = ((temp.y - seed.y) + 0.0) / (temp.x - seed.x);
-					if (!count.containsKey(slope)) {
-						count.put(slope, 1);
-					} else {
-						count.put(slope, count.get(slope) + 1);
-					}
-					most = Math.max(most, count.get(slope));
+					// can have problem with precision: use BigDecimal
+					double slope = ((double) (next.y - cur.y)) / ((double) (next.x - cur.x));
+					Integer count = countMap.get(slope);
+					countMap.put(slope, (count == null) ? 1 : count + 1);
+					differentX = Math.max(differentX, countMap.get(slope));
 				}
 			}
-			most = Math.max(most, sameX) + same;
-			result = Math.max(result, most);
+			differentX = Math.max(differentX, sameX) + same;
+			result = Math.max(result, differentX);
 		}
 		return result;
 	}
