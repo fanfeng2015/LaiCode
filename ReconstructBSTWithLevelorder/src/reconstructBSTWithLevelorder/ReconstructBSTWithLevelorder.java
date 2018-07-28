@@ -3,11 +3,11 @@ package reconstructBSTWithLevelorder;
 import java.util.ArrayList;
 import java.util.List;
 
-// Given the levelorder traversal sequence of a binary search tree, reconstruct the original tree.
+// Given the level-order traversal sequence of a binary search tree, reconstruct the original tree.
 
 // Assumption:
-// 1. The given sequence is not null
-// 2. There are no duplicate keys in the binary search tree
+// 1. The given sequence is not null.
+// 2. There are no duplicate keys in the binary search tree.
 
 public class ReconstructBSTWithLevelorder {
 
@@ -38,8 +38,7 @@ public class ReconstructBSTWithLevelorder {
 		return root;
 	}
 
-	// Time complexity is O(n^2) in the worst case, but O(n*log(n)) in the
-	// average case.
-	// Space complexity is O(n) in the worst case, but O(log(n)) in the average
-	// case.
+	// Time complexity is O(n^2) in the worst case, but O(n*log(n)) on average.
+	// Space complexity is O(n^2) in the worst case, but O(n*log(n)) on average, or
+	// O(n) if garbage collection is ideal, although not possible in practice.
 }
