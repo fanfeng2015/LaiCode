@@ -3,21 +3,23 @@ package largestSumOfValidNumbers;
 import java.util.ArrayList;
 import java.util.List;
 
-// Given a 2D array A[8][8] with all integer numbers if we take a number a[i][j], 
-// then we cannot take its 8 neighboring cells. 
-// How should we take the numbers to make their sum as large as possible.
+// Given a 2D array A[8][8] with all integer numbers if we take a number 
+// a[i][j], then we cannot take its 8 neighboring cells. 
 
-// Assumption: The given matrix is 8 * 8
+// How should we take the numbers to make their sum as large as possible?
+
+// Assumption: The given matrix is 8 * 8.
 
 public class LargestSumOfValidNumbers {
 
+	private static int k = 8;
+
 	public int largestSum(int[][] matrix) {
-		int k = 8;
 		List<Integer> configs = validConfigs(k);
 		int[][] largest = new int[k][configs.size()];
-		for (int i = 0; i < k; i++) {
-			// M[i][j] = max(M[i - 1][k]), for all possible k
-			for (int j = 0; j < configs.size(); j++) {
+		for (int i = 0; i < k; i++) { // i-th row
+			// M[i][j] = max(M[i - 1][k]), for all k
+			for (int j = 0; j < configs.size(); j++) { // pick according to the j-th config in this row
 				largest[i][j] = Integer.MIN_VALUE;
 				if (i == 0) {
 					largest[i][j] = sum(matrix[i], configs.get(j));
@@ -30,27 +32,27 @@ public class LargestSumOfValidNumbers {
 				}
 			}
 		}
-		int result = largest[k - 1][0];
-		for (int i = 1; i < configs.size(); i++) {
+		// pick the largest in the last row
+		int result = Integer.MIN_VALUE;
+		for (int i = 0; i < configs.size(); i++) {
 			result = Math.max(result, largest[k - 1][i]);
 		}
 		return result;
 	}
 
-	// get all possible configurations, each one is represented as an integer,
-	// the least significant 8 bits are used,
-	// need to guarantee no adjacent bit is chosen in the least significant 8
-	// bits
+	// Gets all possible configurations, each one is represented as an integer and
+	// the least significant 8 bits are used. Needs to guarantee that no adjacent
+	// bit is chosen in the least significant 8 bits.
 	private List<Integer> validConfigs(int k) {
 		List<Integer> configs = new ArrayList<Integer>();
-		helper(configs, 0, k, 0);
+		DFS(configs, 0, k, 0);
 		return configs;
 	}
 
-	private void helper(List<Integer> configs, int index, int k, int cur) {
+	private void DFS(List<Integer> configs, int index, int k, int cur) {
 		configs.add(cur);
 		for (int i = index; i < k; i++) {
-			helper(configs, i + 2, k, cur | (1 << i));
+			DFS(configs, i + 2, k, cur | (1 << i));
 		}
 	}
 
