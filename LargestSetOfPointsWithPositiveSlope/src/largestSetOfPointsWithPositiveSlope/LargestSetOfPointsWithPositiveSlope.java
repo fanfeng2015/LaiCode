@@ -3,9 +3,9 @@ package largestSetOfPointsWithPositiveSlope;
 import java.util.Arrays;
 import java.util.Comparator;
 
-// Given an array of 2D coordinates of points (all the coordinates are integers), 
-// find the largest number of points that can form a set such that any pair of points
-// in the set can form a line with positive slope. Return the size of such maximal set.
+// Given an array of 2D coordinates of points (all the coordinates are integers), find
+// the largest number of points that can form a set such that any pair of points in the
+// set can form a line with positive slope. Return the size of such maximal set.
 
 public class LargestSetOfPointsWithPositiveSlope {
 
@@ -23,7 +23,7 @@ public class LargestSetOfPointsWithPositiveSlope {
 				return p1.x < p2.x ? -1 : 1;
 			}
 		});
-		// run longest ascending subsequence
+		// run longest ascending subsequence on y coordinate
 		int result = 1;
 		int[] longest = new int[points.length + 1];
 		longest[1] = points[0].y;
@@ -51,13 +51,6 @@ public class LargestSetOfPointsWithPositiveSlope {
 		return right;
 	}
 
-	// Time complexity is O(n * log(n)).
-	// Space complexity is O(n), because merge sort takes extra linear space.
-
-	public static void main(String[] agrs) {
-		LargestSetOfPointsWithPositiveSlope largestSetOfPointsWithPositiveSlope = new LargestSetOfPointsWithPositiveSlope();
-		Point[] points = new Point[] { new Point(1, 2), new Point(1, 2) };
-		System.out.println(largestSetOfPointsWithPositiveSlope.largest(points));
-	}
-
+	// Time complexity is O(n*log(n)).
+	// Space complexity is O(n).
 }
