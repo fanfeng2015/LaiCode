@@ -39,5 +39,5 @@ public class KthSmallestInTwoSortedArrays {
 	}
 
 	// Time complexity is O(log(k)).
-	// Space complexity is O(log(k)), because of call stack.
+	// Space complexity is O(log(k)), because of call-stack.
 }
