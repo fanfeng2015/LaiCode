@@ -45,13 +45,12 @@ public class NQueens {
 
 	// another solution that validates queen's position in O(1) time
 	public List<List<Integer>> nqueens2(int n) {
-		int row = 0;
 		int[] cur = new int[n];
 		List<List<Integer>> result = new ArrayList<List<Integer>>();
 		boolean[] usedColumns = new boolean[n]; // columns with a queen
 		boolean[] usedDiagonals = new boolean[2 * n - 1]; // diagonals with a queen
 		boolean[] usedRevDiagonals = new boolean[2 * n - 1]; // reverse diagonals with a queen
-		helper2(n, row, cur, result, usedColumns, usedDiagonals, usedRevDiagonals);
+		helper2(n, 0, cur, result, usedColumns, usedDiagonals, usedRevDiagonals);
 		return result;
 	}
 
@@ -63,10 +62,10 @@ public class NQueens {
 		}
 		for (int i = 0; i < n; i++) {
 			if (valid2(n, row, i, usedColumns, usedDiagonals, usedRevDiagonals)) {
-				mark(n, row, i, usedColumns, usedDiagonals, usedRevDiagonals);
 				cur[row] = i;
+				flip(n, row, i, usedColumns, usedDiagonals, usedRevDiagonals);
 				helper2(n, row + 1, cur, result, usedColumns, usedDiagonals, usedRevDiagonals);
-				unmark(n, row, i, usedColumns, usedDiagonals, usedRevDiagonals);
+				flip(n, row, i, usedColumns, usedDiagonals, usedRevDiagonals);
 			}
 		}
 	}
@@ -84,20 +83,13 @@ public class NQueens {
 		return !usedColumns[col] && !usedDiagonals[row + col] && !usedRevDiagonals[col - row + n - 1];
 	}
 
-	private void mark(int n, int row, int col, boolean[] usedColumns, boolean[] usedDiagonals,
+	private void flip(int n, int row, int col, boolean[] usedColumns, boolean[] usedDiagonals,
 			boolean[] usedRevDiagonals) {
-		usedColumns[col] = true;
-		usedDiagonals[row + col] = true;
-		usedRevDiagonals[col - row + n - 1] = true;
+		usedColumns[col] = !usedColumns[col];
+		usedDiagonals[row + col] = !usedDiagonals[row + col];
+		usedRevDiagonals[col - row + n - 1] = !usedRevDiagonals[col - row + n - 1];
 	}
 
-	private void unmark(int n, int row, int col, boolean[] usedColumns, boolean[] usedDiagonals,
-			boolean[] usedRevDiagonals) {
-		usedColumns[col] = false;
-		usedDiagonals[row + col] = false;
-		usedRevDiagonals[col - row + n - 1] = false;
-	}
-
-	// Time complexity is O(n*n!).
+	// Time complexity is O(n*n!), this is an upper bound, which is not tight.
 	// Space complexity is O(n).
 }
