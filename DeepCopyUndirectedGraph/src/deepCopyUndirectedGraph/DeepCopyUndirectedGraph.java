@@ -39,7 +39,7 @@ public class DeepCopyUndirectedGraph {
 	}
 
 	// Time complexity is O(|V|+|E|).
-	// Space complexity is O(|V|+|E|), because of call stack.
+	// Space complexity is O(|V|+|E|), because of call-stack.
 	
 	// BFS
 	public List<GraphNode> copy2(List<GraphNode> graph) {
