@@ -83,5 +83,5 @@ public class GenerateRandomMaze {
 	}
 
 	// Time complexity is O(n^2).
-	// Space complexity is O(n^2), because of call stack.
+	// Space complexity is O(n^2), because of call-stack.
 }
