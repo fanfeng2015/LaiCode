@@ -17,7 +17,7 @@ import java.util.Map;
 
 public class SortInSpecifiedOrder {
 
-	static class MyComparator implements Comparator<Integer> {
+	private static class MyComparator implements Comparator<Integer> {
 
 		private Map<Integer, Integer> map;
 
@@ -53,4 +53,8 @@ public class SortInSpecifiedOrder {
 		}
 		return A1;
 	}
+
+	// Time complexity is O(m*log(m) + n).
+	// Space complexity is O(m + n), because of merge sort (for non-primitive
+	// types).
 }
