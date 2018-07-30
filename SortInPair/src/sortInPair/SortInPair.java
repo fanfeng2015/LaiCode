@@ -1,7 +1,5 @@
 package sortInPair;
 
-import java.util.Arrays;
-
 // LeetCode #280 (Wiggle Sort).
 
 // Given an array A with integers, sort the array such that  
@@ -13,30 +11,8 @@ import java.util.Arrays;
 
 public class SortInPair {
 
-	public void sortInPair(int[] array) {
-		if (array == null || array.length <= 1) {
-			return;
-		}
-		Arrays.sort(array);
-		int left = 1, right = 2;
-		while (right < array.length) {
-			swap(array, left, right);
-			left += 2;
-			right += 2;
-		}
-	}
-
-	private void swap(int[] array, int left, int right) {
-		int temp = array[left];
-		array[left] = array[right];
-		array[right] = temp;
-	}
-
-	// Time complexity is O(n*log(n)), because of quick sort (for primitive types)..
-	// Space complexity is O(log(n)).
-
 	// one pass linear time
-	public void sortInPair2(int[] array) {
+	public void sortInPair(int[] array) {
 		if (array == null || array.length <= 1) {
 			return;
 		}
@@ -45,6 +21,12 @@ public class SortInPair {
 				swap(array, i, i + 1);
 			}
 		}
+	}
+
+	private void swap(int[] array, int left, int right) {
+		int temp = array[left];
+		array[left] = array[right];
+		array[right] = temp;
 	}
 
 	// Time complexity is O(n).
