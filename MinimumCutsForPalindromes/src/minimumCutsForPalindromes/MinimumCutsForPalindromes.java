@@ -1,5 +1,7 @@
 package minimumCutsForPalindromes;
 
+// LeetCode #132 (Palindrome Partitioning II).
+
 // Given a string, a partitioning of the string is a palindrome partitioning if every
 // substring of the partition is a palindrome. 
 
@@ -9,8 +11,8 @@ package minimumCutsForPalindromes;
 
 public class MinimumCutsForPalindromes {
 
-	// isPalindrome[i][j]: whether substring [i, j] is a palindrome
-	// minCuts[i]: min cuts needed to palindrome partition substring [0, i]
+	// isPalindrome[i][j]: whether substring in [i, j] is a palindrome
+	// minCuts[i]: min cuts needed to palindrome partition substring in [0, i]
 	public int minCuts(String input) {
 		if (input.length() == 0) {
 			return 0;
@@ -21,11 +23,9 @@ public class MinimumCutsForPalindromes {
 		for (int i = 1; i < n; i++) {
 			minCuts[i] = i;
 			for (int j = 0; j <= i; j++) {
-				if (input.charAt(j) == input.charAt(i)) {
-					isPalindrome[j][i] = (i - j < 2) || isPalindrome[j + 1][i - 1];
-				}
-				if (isPalindrome[j][i]) {
-					minCuts[i] = j == 0 ? 0 : Math.min(minCuts[i], minCuts[j - 1] + 1);
+				if (input.charAt(j) == input.charAt(i) && (i - j < 2 || isPalindrome[j + 1][i - 1])) {
+					isPalindrome[j][i] = true;
+					minCuts[i] = (j == 0) ? 0 : Math.min(minCuts[i], minCuts[j - 1] + 1);
 				}
 			}
 		}
