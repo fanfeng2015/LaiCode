@@ -65,7 +65,7 @@ public class KthSmallestInSortedMatrix {
 	// Time complexity is O(k*log(k)).
 	// Space complexity is O(k + m*n) = O(m*n).
 	
-	// Solution 2: Binary Search
+	// Solution 2: Binary search
 	public int kthSmallest2(int[][] matrix, int k) {
 		int m = matrix.length, n = matrix[0].length;
 		int low = matrix[0][0], high = matrix[m - 1][n - 1];
