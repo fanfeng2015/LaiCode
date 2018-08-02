@@ -3,10 +3,12 @@ package binaryTreeDiameter;
 // LeetCode #543 (Diameter of Binary Tree).
 
 // Note the different definition of diameter between LaiCode and LeetCode.
+
 // Basically, when the path is required to be from leaf to leaf, max should only be updated 
 // when root has both left child and right child. 
 
 // Given a binary tree in which each node contains an integer number. 
+
 // The diameter is defined as the longest distance from one leaf node to another leaf node. 
 // The distance is the number of nodes on the path.
 // If there does not exist any such paths, return 0.
