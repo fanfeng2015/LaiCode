@@ -9,8 +9,8 @@ import java.util.PriorityQueue;
 // and for each column the elements are also sorted in ascending order. 
 // Find the k-th smallest number in it.
 
-// Assumption:
-// 1. the matrix is not null, N > 0 and M > 0
+// Assumptions:
+// 1. The matrix is not null, N > 0 and M > 0.
 // 2. K > 0 and K <= N * M
 
 public class KthSmallestInSortedMatrix {
@@ -103,8 +103,6 @@ public class KthSmallestInSortedMatrix {
 		return left;
 	}
 	
-	// Time complexity is O(n*log(n)*log(N)), N = Integer.MAX_VALUE;
+	// Time complexity is O(m*log(n)*log(N)), N = Integer.MAX_VALUE;
 	// Space complexity is O(1).
 }
-
-
